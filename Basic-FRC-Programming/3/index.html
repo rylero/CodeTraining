@@ -952,7 +952,9 @@ This creates a Talon motor controller on PWM channel 1. The Talon motor controll
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">runOnce</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">motorController</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mf">0.0</span><span class="p">));</span>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
 </span></code></pre></div>
-These two functions are command generators. The first one, <code>startRollersCommand()</code> generates a Command that sets the motor controller speed to 1.0. This is done through the runOnce function supplied by the SubsystemBase class. By using runOnce we can pass in a function, or lambda in this case, and it will automatically asign create a command that runs that function on initalize. It will also include our subsystem as a mechanism requirement allowing the command to make and recieve interrupts from the command scheduler. We do the same with the <code>stopRollersCommand()</code> except we set the speed to 0.0.</p>
+These two functions are command generators. The first one, <code>startRollersCommand()</code> generates a Command that sets the motor controller speed to 1.0. This is done through the runOnce function supplied by the SubsystemBase class. </p>
+<p>By using runOnce we can pass in a function, or lambda in this case, and it will automatically asign create a command that runs that function on initalize. It will also include our subsystem as a mechanism requirement allowing the command to make and recieve interrupts from the command scheduler. </p>
+<p>We do the same with the <code>stopRollersCommand()</code> except we set the speed to 0.0.</p>
 <p>Now we have sucessfully coded our first subsystem! Next lesson will focus on how we trigger those command with user input.</p>
 
 
