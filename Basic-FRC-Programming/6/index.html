@@ -388,6 +388,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    The TalonFX Motor Controller
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -399,6 +412,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#duty-cycle-and-voltage-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Duty Cycle and Voltage Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Requests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motion-magic-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motion Magic Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gear-ratio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gear Ratio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Example
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -728,6 +805,59 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#duty-cycle-and-voltage-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Duty Cycle and Voltage Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Requests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motion-magic-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motion Magic Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gear-ratio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gear Ratio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Example
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -742,7 +872,116 @@
 
 
 
-<h1 id="the-talonfx-motor-controller">The TalonFX Motor Controller</h1>
+<h1 id="the-talonfx-motor-controller"><strong>The TalonFX Motor Controller</strong></h1>
+<p>Before utilizing the TalonFX controller you need to install the vendordep for pheonix6. Once that is complete Ww can start by creating a TalonFX controller on CAN-ID 1:
+<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">TalonFX</span><span class="w"> </span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TalonFX</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></code></pre></div></p>
+<h2 id="duty-cycle-and-voltage-control"><strong>Duty Cycle and Voltage Control</strong></h2>
+<p>There are a couple types of control we can use with the TalonFX. First we can do simple duty cycle or voltage control.
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">controller</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="w"> </span><span class="c1">// 1.0 is the duty cycle were setting the motor controller to use</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">controller</span><span class="p">.</span><span class="na">setVoltage</span><span class="p">(</span><span class="mf">12.0</span><span class="p">);</span><span class="w"> </span><span class="c1">// this will set the motor input voltage to use 12 volts</span>
+</span></code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>More advanced control methods are not always required. For a simple intake or outtake, velocity or position control is not always required.</p>
+</div>
+<h2 id="control-requests"><strong>Control Requests</strong></h2>
+<p>TalonFX provides very customizable control requests to give programmers control over their mechanisms. The core of the talonfx control requests relies on this method:
+<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">controller</span><span class="p">.</span><span class="na">setControl</span><span class="p">(</span><span class="o">&lt;&lt;&lt;</span><span class="n">control</span><span class="w"> </span><span class="n">request</span><span class="o">&gt;&gt;&gt;</span><span class="p">);</span>
+</span></code></pre></div></p>
+<p>There are a variety of control types you can use:</p>
+<table>
+<thead>
+<tr>
+<th>Control Request Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PositionVoltage</code></td>
+<td>This request uses voltage control to reach to a position</td>
+</tr>
+<tr>
+<td><code>PositionDutyCycle</code></td>
+<td>This request uses duty cycle control to reach to a position</td>
+</tr>
+<tr>
+<td><code>PositionTorqueCurrentFOC</code></td>
+<td>This request uses torque FOC control to reach to a position. FOC requires pheonix pro but can also increase motor power output by 15%</td>
+</tr>
+<tr>
+<td><code>VelocityVoltage</code></td>
+<td>This request uses voltage control to reach to a velocity</td>
+</tr>
+<tr>
+<td><code>VelocityDutyCycle</code></td>
+<td>This request uses duty cycle control to reach to a velocity</td>
+</tr>
+<tr>
+<td><code>VelocityTorqueCurrentFOC</code></td>
+<td>This request uses torque FOC control to reach to a velocity. FOC requires pheonix pro but can also increase motor power output by 15%</td>
+</tr>
+</tbody>
+</table>
+<p>Before you can use any control requests you need to define gains for you motor. This is done through the motor configurator.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To see all the pheonix 6 configurator options and gains here: <a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/configs/TalonFXConfiguration.html">Pheonix 6 Documentation</a></p>
+</div>
+<h2 id="motion-magic-control"><strong>Motion Magic Control</strong></h2>
+<p>Motion magic control is pheonix's way of doing trapezoidal motion profiles. When setting your motors configs, you can set motion magic configs to control velocity and acceleration.</p>
+<h2 id="gear-ratio"><strong>Gear Ratio</strong></h2>
+<p>TalonFX control allows you to set gear ratios for you motor controller.</p>
+<table>
+<thead>
+<tr>
+<th>Gear Ratio Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SensorToMechanism</code></td>
+<td>This is the gear ratio between the output of the sensor and the output of the gearbox</td>
+</tr>
+<tr>
+<td><code>RotorToSensor</code></td>
+<td>This is the gear ratio between the rotor and an external sensor</td>
+</tr>
+</tbody>
+</table>
+<h2 id="code-example"><strong>Code Example</strong></h2>
+<p>Here is a code example that shows the configuration of a TalonFX motor controller.</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">motorController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TalonFX</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">TalonFXConfiguration</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TalonFXConfiguration</span><span class="p">();</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">configuration</span><span class="p">.</span><span class="na">CurrentLimits</span><span class="p">.</span><span class="na">StatorCurrentLimit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">configuration</span><span class="p">.</span><span class="na">MotorOutput</span><span class="p">.</span><span class="na">NeutralMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NeutralModeValue</span><span class="p">.</span><span class="na">Brake</span><span class="p">;</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">configuration</span><span class="p">.</span><span class="na">MotorOutput</span><span class="p">.</span><span class="na">Inverted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InvertedValue</span><span class="p">.</span><span class="na">Clockwise_Positive</span><span class="p">;</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">configuration</span><span class="p">.</span><span class="na">MotionMagic</span><span class="p">.</span><span class="na">MotionMagicCruiseVelocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="p">;</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="n">configuration</span><span class="p">.</span><span class="na">MotionMagic</span><span class="p">.</span><span class="na">MotionMagicAcceleration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="n">configuration</span><span class="p">.</span><span class="na">MotionMagic</span><span class="p">.</span><span class="na">MotionMagicJerk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">300</span><span class="p">;</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="n">configuration</span><span class="p">.</span><span class="na">Slot0</span><span class="p">.</span><span class="na">GravityType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GravityTypeValue</span><span class="p">.</span><span class="na">Elevator_Static</span><span class="p">;</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="n">configuration</span><span class="p">.</span><span class="na">Slot0</span><span class="p">.</span><span class="na">kP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.0</span><span class="p">;</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="n">configuration</span><span class="p">.</span><span class="na">Slot0</span><span class="p">.</span><span class="na">kI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.02</span><span class="p">;</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="n">configuration</span><span class="p">.</span><span class="na">Slot0</span><span class="p">.</span><span class="na">kD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="n">configuration</span><span class="p">.</span><span class="na">Slot0</span><span class="p">.</span><span class="na">kV</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.4</span><span class="p">;</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="n">configuration</span><span class="p">.</span><span class="na">Slot0</span><span class="p">.</span><span class="na">kA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5</span><span class="p">;</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="n">configuration</span><span class="p">.</span><span class="na">Slot0</span><span class="p">.</span><span class="na">kS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.25</span><span class="p">;</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="n">configuration</span><span class="p">.</span><span class="na">Slot0</span><span class="p">.</span><span class="na">kG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.6</span><span class="p">;</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="n">configuration</span><span class="p">.</span><span class="na">Feedback</span><span class="p">.</span><span class="na">SensorToMechanismRatio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">8.14</span><span class="p">;</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="n">motorController</span><span class="p">.</span><span class="na">getConfigurator</span><span class="p">().</span><span class="na">apply</span><span class="p">(</span><span class="n">configuration</span><span class="p">);</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that not all these parameters have to be set depending on the usecase. For example, if you only want to do pid you dont have to set the feed forward gains.</p>
+</div>
 
 
 
