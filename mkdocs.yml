@@ -5,6 +5,25 @@ theme:
     scheme: slate
     accent: yellow
 
+nav:
+  - Welcome to the Frc Programming Guide: 'index.md'
+  - Basic Frc Programming:
+    - 'Basic-FRC-Programming/1.md'
+    - 'Basic-FRC-Programming/2.md'
+    - 'Basic-FRC-Programming/3.md'
+    - 'Basic-FRC-Programming/4.md'
+    - 'Basic-FRC-Programming/5.md'
+    - 'Basic-FRC-Programming/6.md'
+    - 'Basic-FRC-Programming/7.md'
+  - Advanced Frc Programming:
+    - 'Advanced-FRC-Programming/1.md'
+    - 'Advanced-FRC-Programming/2.md'
+    - 'Advanced-FRC-Programming/3.md'
+    - 'Advanced-FRC-Programming/4.md'
+    - 'Advanced-FRC-Programming/5.md'
+    - 'Advanced-FRC-Programming/6.md'
+    - 'Advanced-FRC-Programming/7.md'
+
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
