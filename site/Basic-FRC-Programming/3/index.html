@@ -894,7 +894,7 @@
 </ul>
 <h3 id="2-perodic"><strong>2. perodic()</strong></h3>
 <ul>
-<li>Called repeatedly (typically every robot cycle, e.g., every 20ms)</li>
+<li>Called repeatedly (typically every robot cycle, e.g., every 20ms) by the Command Scheduler</li>
 <li>Often used for logging telemetry data about what is going on in the subsystem</li>
 <li>Also used for mechanisms that need to hold their position by constantly sending control requests</li>
 </ul>
@@ -904,7 +904,56 @@
 <li>Built using the runOnce, run, etc. subsystem factories that come from inheriting SubsystemBase</li>
 </ul>
 <h2 id="coding-our-first-subsystem"><strong>Coding our First Subsystem</strong></h2>
-<p><strong>Work In Progress</strong></p>
+<p>Its finally time to get coding! In this section were going to create a simple roller subsystem like what we saw on the 2025 kitbot. It will extend SubsystemBase, hold a simple pwm motor controller, and have command factories for spinning and stopping the roller.</p>
+<figure>
+    <img alt="2025 Kitbot" src="https://andymark.com/cdn/shop/files/am-KitBot25_1_1200x600_crop_center.jpg?v=1749943780" width="400" />
+<br />
+<figcaption>The 2025 Kitbot featuring a roller subsystem</figcaption>
+</figure>
+<p>First create a new folder called <code>Subsystems</code>. In that folder create a file called <code>RollerSubsystem.java</code>. Then put the following code in the file:
+<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">frc.robot.Subsystems</span><span class="p">;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.motorcontrol.Talon</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj2.command.Command</span><span class="p">;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj2.command.SubsystemBase</span><span class="p">;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RollerSubsystem</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">SubsystemBase</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Talon</span><span class="w"> </span><span class="n">motorController</span><span class="p">;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">RollerSubsystem</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="n">motorController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Talon</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Command</span><span class="w"> </span><span class="nf">startRollersCommand</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">runOnce</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">motorController</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mf">1.0</span><span class="p">));</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Command</span><span class="w"> </span><span class="nf">stopRollersCommand</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">runOnce</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">motorController</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mf">0.0</span><span class="p">));</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="p">}</span>
+</span></code></pre></div>
+Lets walk through this code line by line to see what we can learn.</p>
+<p>First we see that this class inherits from the <code>SubsystemBase</code> class and creates a constructor for our class. The <code>SubsystemBase</code> class provides many of the subsystem specific command factories (<code>runOnce()</code>) and other useful tools to make out programming experience easier.</p>
+<p>Then we see this block of code:
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">private</span><span class="w"> </span><span class="n">Talon</span><span class="w"> </span><span class="n">motorController</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">public</span><span class="w"> </span><span class="nf">RollerSubsystem</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">motorController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Talon</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
+</span></code></pre></div>
+This creates a Talon motor controller on PWM channel 1. The Talon motor controller is rarely used in FRC today but it works based off a PWM signal suppied by the roborio. Channel 1 means our motor is plugged into the 1st channel of the roborio pinout. The Talon motor controller acts as our interface with the actual hardware allowing us to control the speed easily through code.</p>
+<p>Then we see the next two functions of the class:
+<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="n">Command</span><span class="w"> </span><span class="nf">startRollersCommand</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">runOnce</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">motorController</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mf">1.0</span><span class="p">));</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">}</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kd">public</span><span class="w"> </span><span class="n">Command</span><span class="w"> </span><span class="nf">stopRollersCommand</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">runOnce</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">motorController</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mf">0.0</span><span class="p">));</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
+</span></code></pre></div>
+These two functions are command generators. The first one, <code>startRollersCommand()</code> generates a Command that sets the motor controller speed to 1.0. This is done through the runOnce function supplied by the SubsystemBase class. By using runOnce we can pass in a function, or lambda in this case, and it will automatically asign create a command that runs that function on initalize. It will also include our subsystem as a mechanism requirement allowing the command to make and recieve interrupts from the command scheduler. We do the same with the <code>stopRollersCommand()</code> except we set the speed to 0.0.</p>
+<p>Now we have sucessfully coded our first subsystem! Next lesson will focus on how we trigger those command with user input.</p>
 
 
 
