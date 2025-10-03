@@ -32,6 +32,10 @@ nav:
   - How To Troubleshoot: 'troubleshooting.md'
   - Notes: 'notes.md'
 
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/chart.js
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
@@ -46,3 +50,6 @@ markdown_extensions:
   - pymdownx.blocks.caption
   - admonition
   - pymdownx.details
+  - tables
+  - mdx_math:
+      enable_dollar_delimiter: True

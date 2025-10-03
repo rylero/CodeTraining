@@ -365,6 +365,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    The Fundamentals of Controls
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -376,6 +389,112 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pid" class="md-nav__link">
+    <span class="md-ellipsis">
+      PID
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-proportional" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Proportional
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-integral" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Integral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-derivative" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Derivative
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-pid-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The PID Equation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tuning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedforward" class="md-nav__link">
+    <span class="md-ellipsis">
+      FeedForward
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pid-feedforward" class="md-nav__link">
+    <span class="md-ellipsis">
+      PID + FeedForward
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trapezoidal-motion-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trapezoidal Motion Profiles
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -728,6 +847,101 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pid" class="md-nav__link">
+    <span class="md-ellipsis">
+      PID
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-proportional" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Proportional
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-integral" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Integral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-derivative" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Derivative
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-pid-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The PID Equation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tuning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedforward" class="md-nav__link">
+    <span class="md-ellipsis">
+      FeedForward
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pid-feedforward" class="md-nav__link">
+    <span class="md-ellipsis">
+      PID + FeedForward
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trapezoidal-motion-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trapezoidal Motion Profiles
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -742,7 +956,100 @@
 
 
 
-<h1 id="the-fundamentals-of-controls">The Fundamentals of Controls</h1>
+<h1 id="the-fundamentals-of-controls"><strong>The Fundamentals of Controls</strong></h1>
+<p>So now we know how to make subsystems, create commands, and bind those commands to triggers. But how do we actually control a motor to make it do what we want to do?</p>
+<p>Here is where control theory comes in. In this lesson we are going to cover PID and FeedForward control. These are both common types of controls that are used all over FRC. We will end the lesson by combining the two methods of control utilizing something called a trapezoidal motion profile.</p>
+<h2 id="pid"><strong>PID</strong></h2>
+<p>PID is a form closed loop control. Closed loop control is where a control system activly uses feedback from motors or encoders to adjust for disturbances and noise in a system. PID is a system of control involving three gains: Proportional, Integral, and Derivative.</p>
+<figure>
+    <img alt="PID Controller" src="../../img/pid_controller.png" width="600" />
+<br />
+<figcaption>A Diagram of the PID Controller System</figcaption>
+</figure>
+<h3 id="1-proportional"><strong>1. Proportional</strong></h3>
+<ul>
+<li>This term scales linearly with the distance away from the setpoint</li>
+<li>It covers the majority of the output of the controller</li>
+</ul>
+<h3 id="2-integral"><strong>2. Integral</strong></h3>
+<ul>
+<li>This term scales linearly with the area under the curve between the setpoint and ouput</li>
+<li>Used for small positional errors that proportional can't overcome</li>
+</ul>
+<h3 id="3-derivative"><strong>3. Derivative</strong></h3>
+<ul>
+<li>This term scales based on the velocity of the output</li>
+<li>Often not necessary for control</li>
+</ul>
+<h3 id="the-pid-equation"><strong>The PID Equation</strong></h3>
+<p>Each of these terms are combined into this equation:</p>
+<p>
+<script type="math/tex; mode=display">
+u\left(t\right)=K_{p}e\left(t\right)+K_{i}\int_{0}^{t}e\left(\tau\right)d\tau+K_{d}\frac{de\left(t\right)}{dt}
+</script>
+</p>
+<h3 id="tuning"><strong>Tuning</strong></h3>
+<p>Tuning a PID controller is a somewhat difficult process. Generally start by increasing the proportional term until the system oscilates around the setpoint. Back this term off a little. Then if the system overshoots the target increase the derivative term. If the system has a steady state error where it doesn't quite reach the target increase the integral term. Other than that its alot of trial and error to find the right values.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In control theory you will often see the motor or mechanism your trying to control refered to as the <code>plant</code>.</p>
+</div>
+<p>Try to see if you can find gains that will reach the setpoint without overshooting in this PID simulator:</p>
+<div id="chartContainer" style="width:700px; height: 400px; background: #2d2d2d; border-radius: 8px; margin-bottom: 20px;">
+    <canvas id="pidChart" style="width: 100%; height: 100%;"></canvas>
+</div>
+
+<div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
+    <div style="margin: 10px 0; width: 300px;">
+        <label for="kp" style="display: block; margin-bottom: 5px;">K (Proportional): <span id="kpValue" style="font-size: 18px; font-weight: bold; color: #ff6b6b;">0.0</span></label>
+        <input type="range" id="kp" min="0" max="1" step="0.01" value="0.0" style="width: 100%; height: 8px; background: #333; outline: none; border-radius: 4px;">
+        <style>
+            input[type="range"]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 20px;
+                height: 20px;
+                background: #ff6b6b;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+        </style>
+    </div>
+    <div style="margin: 10px 0; width: 300px;">
+        <label for="ki" style="display: block; margin-bottom: 5px;">Ki (Integral): <span id="kiValue" style="font-size: 18px; font-weight: bold; color: #ff6b6b;">0.0</span></label>
+        <input type="range" id="ki" min="0" max="0.1" step="0.001" value="0.0" style="width: 100%; height: 8px; background: #333; outline: none; border-radius: 4px;">
+    </div>
+    <div style="margin: 10px 0; width: 300px;">
+        <label for="kd" style="display: block; margin-bottom: 5px;">Kd (Derivative): <span id="kdValue" style="font-size: 18px; font-weight: bold; color: #ff6b6b;">0.0</span></label>
+        <input type="range" id="kd" min="0" max="1" step="0.02" value="0.0" style="width: 100%; height: 8px; background: #333; outline: none; border-radius: 4px;">
+    </div>
+</div>
+
+<script src="../../assets/pid-sim.js"></script>
+
+<h2 id="feedforward"><strong>FeedForward</strong></h2>
+<h2 id="pid-feedforward"><strong>PID + FeedForward</strong></h2>
+<h2 id="trapezoidal-motion-profiles"><strong>Trapezoidal Motion Profiles</strong></h2>
+<!-- 
+
+
+<div class="pid-controls">
+  <div><label for="kp">Kp:</label><input type="range" id="kp" min="0" max="10" step="0.1" value="1"><span id="kpVal">1</span></div>
+  <div><label for="ki">Ki:</label><input type="range" id="ki" min="0" max="5" step="0.01" value="0"><span id="kiVal">0</span></div>
+  <div><label for="kd">Kd:</label><input type="range" id="kd" min="0" max="2" step="0.01" value="0.1"><span id="kdVal">0.1</span></div>
+  <div><label for="setpoint">Setpoint:</label><input type="range" id="setpoint" min="0" max="2" step="0.1" value="1"><span id="setpointVal">1</span></div>
+  <div><label for="duration">Duration (s):</label><input type="range" id="duration" min="1" max="20" step="1" value="10"><span id="durationVal">10</span></div>
+  <br>
+  <button id="playBtn">Start Live Sim</button>
+  <button id="resetBtn">Reset</button>
+</div>
+
+<div style="position: relative; height: 400px;">
+  <canvas id="pidChart"></canvas>
+</div>
+
+<script src="/assets/pid-sim.js"></script>
+<script src="/assets/pid-controls.js"></script>
+<link rel="stylesheet" href="/assets/pid-controls.css"> -->
 
 
 
@@ -795,6 +1102,10 @@
     
     
       <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       
     
   </body>

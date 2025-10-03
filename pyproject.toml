@@ -5,8 +5,16 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "marimo>=0.16.5",
+    "matplotlib>=3.10.6",
     "mkdocs>=1.6.1",
     "mkdocs-awesome-nav>=3.2.0",
+    "mkdocs-marimo>=0.2.1",
     "mkdocs-material>=9.6.21",
     "mkdocs-nav-weight>=0.3.0",
+    "numpy>=2.3.3",
+    "python-markdown-math",
 ]
+
+[tool.uv.sources]
+python-markdown-math = { url = "https://github.com/mitya57/python-markdown-math/archive/master.zip" }
