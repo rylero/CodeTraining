@@ -5,6 +5,11 @@ theme:
     scheme: slate
     accent: yellow
 
+watch:
+  - docs
+  - docs/Basic-FRC-Programming
+  - docs/Advanced-FRC-Programming
+
 nav:
   - Welcome to the Frc Programming Guide: 'index.md'
   - Basic Frc Programming:
@@ -15,6 +20,7 @@ nav:
     - 'Basic-FRC-Programming/5.md'
     - 'Basic-FRC-Programming/6.md'
     - 'Basic-FRC-Programming/7.md'
+    - 'Basic-FRC-Programming/8.md'
   - Advanced Frc Programming:
     - 'Advanced-FRC-Programming/1.md'
     - 'Advanced-FRC-Programming/2.md'
@@ -23,6 +29,8 @@ nav:
     - 'Advanced-FRC-Programming/5.md'
     - 'Advanced-FRC-Programming/6.md'
     - 'Advanced-FRC-Programming/7.md'
+  - How To Troubleshoot: 'troubleshooting.md'
+  - Notes: 'notes.md'
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -32,6 +40,7 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.keys
   - attr_list
   - md_in_html
   - pymdownx.blocks.caption
