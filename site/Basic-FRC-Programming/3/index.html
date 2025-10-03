@@ -955,6 +955,10 @@ This creates a Talon motor controller on PWM channel 1. The Talon motor controll
 These two functions are command generators. The first one, <code>startRollersCommand()</code> generates a Command that sets the motor controller speed to 1.0. This is done through the runOnce function supplied by the SubsystemBase class. </p>
 <p>By using runOnce we can pass in a function, or lambda in this case, and it will automatically asign create a command that runs that function on initalize. It will also include our subsystem as a mechanism requirement allowing the command to make and recieve interrupts from the command scheduler. </p>
 <p>We do the same with the <code>stopRollersCommand()</code> except we set the speed to 0.0.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The lambda function in java <code>() -&gt;</code> will be super useful in almost all aspects of robot code. They are used to supply positions, as bodies for commands, or are even passed as consumers for values. Get comfortable using lambdas!</p>
+</div>
 <p>Now we have sucessfully coded our first subsystem! Next lesson will focus on how we trigger those command with user input.</p>
 
 
