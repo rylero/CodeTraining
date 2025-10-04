@@ -1118,7 +1118,7 @@ This is called the voltage balance equation. It defines the relationship betwen 
 <p>The gains for a feed forward system can be aquired in two ways. One way is to compute them using Sys-id. Sys-id involves capturing data about a mechanism and performing a regression to find the system gains. The other and more common way is to just calculate them. Using a tool like ReCalc you can calculate the theoretical values for a system based on things like motors, current limits, and dimensions.</p>
 </div>
 <h3 id="trapezoidal-motion-profiles"><strong>Trapezoidal Motion Profiles</strong></h3>
-<p>Often times trapezoidal motion profiles are used alongside feed forward to have more control over system behavior. They allow us to set a desired acceleration and cruize velocity for the system to reach. This can be used to slow down a system based off limitations of the hardware. This trapezoid can be integrated to get the target position at any given time.</p>
+<p>Often times trapezoidal motion profiles are used alongside feed forward to have more control over system behavior. They allow us to set a desired acceleration and cruize velocity for the system to reach. Using this we can create a trapezoid shape for our velocity with three phases: Acceleration, Cruize, and Deceleration. This trapezoid can be integrated to get the target position at any given time. There are lots of applications for trapezoidal control. A common usecase is to slow the speed or acceleration to prevent the hardware from breaking.</p>
 <figure>
     <img alt="Trapezoidal Motion Profile" src="../../img/trapezoidal.png" width="600" />
 <br />
@@ -1127,7 +1127,9 @@ This is called the voltage balance equation. It defines the relationship betwen 
 <h3 id="the-downside-of-feedforward"><strong>The Downside of FeedForward</strong></h3>
 <p>Feed forward has one major downside over PID. Unlike PID, feed forward cant react to disturbances in the system. Things like data noise, battery voltage fluctuations, and latency can cause the system to not react deterministically. However, feed forward in a deterministic world will get to the setpoint faster. This is why we need to combine the two.</p>
 <h2 id="pid-feed-forward"><strong>PID + Feed Forward</strong></h2>
-<p>Combining PID and Feed forward allows us to get the advantages of both. Feed forward allows us to quickly get close to the setpoint, and PID allows us to combat system disturbances and accurately reach the setpoint. We can combine this with the idea of trapezoidal motion profiles as well. If we set the target of the pid and feed forward controller to be the current target of the trapezoidal profile, then we can have a lot of control over how the system will move to the setpoint.</p>
+<p>Combining PID and Feed forward allows us to get the advantages of both. When combining the two we can simply add their outputs together. This provides a couple of advantages: Feed forward allows us to quickly get close to the setpoint, and PID allows us to combat system disturbances and accurately reach the setpoint. </p>
+<p>The combination of PID and Feed forward is the most common type of control for mechanisms that need accurate positioning. We can also use trapezoidal control with the two to control the maximum speed and acceleration of the system.</p>
+<p>Luckly for us, WPILib and CTRE have already implemented alot of these types of controls for us. For our next section we will cover the TalonFX motor controller and how to use these types of control systems to accomplish a task.</p>
 
 
 
